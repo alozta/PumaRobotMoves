@@ -2,10 +2,10 @@
 %
 % Robotics Project | Ali Ozan Taçalan
 %
-function puma3d
 % GUI kinematic demo for the Puma
 % Robot geometry uses the CAD2MATDEMO code in the Mathworks file exchange
 %
+function puma3d
 %%
 loaddata
 InitHome
@@ -14,14 +14,8 @@ InitHome
 demo = uicontrol(fig_1,'String','Demo','callback',@demo_button_press,...
     'Position',[20 5 60 20]);
 
-rnd_demo = uicontrol(fig_1,'String','Random Move','callback',@rnd_demo_button_press,...
-    'Position',[100 5 80 20]);
-
 clr_trail = uicontrol(fig_1,'String','Clear Trail','callback',@clr_trail_button_press,...
-    'Position',[200 5 60 20]);
-%
-home = uicontrol(fig_1,'String','Home','callback',@home_button_press,...
-    'Position',[280 5 70 20]);
+    'Position',[100 5 80 20]);
 %
 % Kinematics Panel
 %
@@ -181,7 +175,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         T_Old = getappdata(0,'ThetaOld');
         t2old = T_Old(2); t3old = T_Old(3); t4old = T_Old(4);
         t5old = T_Old(5); t6old = T_Old(6);
-        pumaANI(slider_value+t1_home,t2old,t3old,t4old,t5old,t6old,10,'n')
+        pumaAnimate(slider_value+t1_home,t2old,t3old,t4old,t5old,t6old,10,'n')
     end
 %
 %% Slider for Theta 2 motion.
@@ -192,7 +186,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         T_Old = getappdata(0,'ThetaOld');
         t1old = T_Old(1); t3old = T_Old(3); t4old = T_Old(4);
         t5old = T_Old(5); t6old = T_Old(6);
-        pumaANI(t1old,slider_value+t2_home,t3old,t4old,t5old,t6old,10,'n')
+        pumaAnimate(t1old,slider_value+t2_home,t3old,t4old,t5old,t6old,10,'n')
     end
 %
 %% Slider for Theta 3 motion.
@@ -202,7 +196,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         T_Old = getappdata(0,'ThetaOld');
         t1old = T_Old(1); t2old = T_Old(2); t4old = T_Old(4);
         t5old = T_Old(5); t6old = T_Old(6);
-        pumaANI(t1old,t2old,slider_value+t3_home,t4old,t5old,t6old,10,'n')
+        pumaAnimate(t1old,t2old,slider_value+t3_home,t4old,t5old,t6old,10,'n')
     end
 %
 %% Slider for Theta 4 motion.
@@ -212,7 +206,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         T_Old = getappdata(0,'ThetaOld');
         t1old = T_Old(1); t2old = T_Old(2); t3old = T_Old(3);
         t5old = T_Old(5); t6old = T_Old(6);
-        pumaANI(t1old,t2old,t3old,slider_value,t5old,t6old,10,'n')
+        pumaAnimate(t1old,t2old,t3old,slider_value,t5old,t6old,10,'n')
     end
 %
 %% Slider for Theta 5 motion.
@@ -222,7 +216,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         T_Old = getappdata(0,'ThetaOld');
         t1old = T_Old(1); t2old = T_Old(2); t3old = T_Old(3);
         t4old = T_Old(4); t6old = T_Old(6);
-        pumaANI(t1old,t2old,t3old,t4old,slider_value,t6old,10,'n')
+        pumaAnimate(t1old,t2old,t3old,t4old,slider_value,t6old,10,'n')
     end
 %
 %% Slider for Theta 6 motion.
@@ -232,7 +226,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         T_Old = getappdata(0,'ThetaOld');
         t1old = T_Old(1); t2old = T_Old(2); t3old = T_Old(3);
         t4old = T_Old(4); t5old = T_Old(5);
-        pumaANI(t1old,t2old,t3old,t4old,t5old,slider_value,10,'n')
+        pumaAnimate(t1old,t2old,t3old,t4old,t5old,slider_value,10,'n')
     end
 %
 %% Edit box for Theta 1 motion.
@@ -245,7 +239,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         t2old = T_Old(2); t3old = T_Old(3); t4old = T_Old(4);
         t5old = T_Old(5); t6old = T_Old(6);
         %
-        pumaANI(user_entry+t1_home,t2old,t3old,t4old,t5old,t6old,10,'n')
+        pumaAnimate(user_entry+t1_home,t2old,t3old,t4old,t5old,t6old,10,'n')
     end
 %
 %% Edit box for Theta 2 motion.
@@ -258,7 +252,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         t1old = T_Old(1); t3old = T_Old(3); t4old = T_Old(4);
         t5old = T_Old(5); t6old = T_Old(6);
         %
-        pumaANI(t1old,user_entry+t2_home,t3old,t4old,t5old,t6old,10,'n')
+        pumaAnimate(t1old,user_entry+t2_home,t3old,t4old,t5old,t6old,10,'n')
     end
 %% Edit box for Theta 3 motion.
 %
@@ -270,7 +264,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         t1old = T_Old(1); t2old = T_Old(2); t4old = T_Old(4);
         t5old = T_Old(5); t6old = T_Old(6);
         %
-        pumaANI(t1old,t2old,user_entry+t3_home,t4old,t5old,t6old,10,'n')
+        pumaAnimate(t1old,t2old,user_entry+t3_home,t4old,t5old,t6old,10,'n')
     end
 %%
 %% Edit box for Theta 4 motion.
@@ -283,7 +277,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         t1old = T_Old(1); t2old = T_Old(2); t3old = T_Old(3);
         t5old = T_Old(5); t6old = T_Old(6);
         %
-        pumaANI(t1old,t2old,t3old,user_entry,t5old,t6old,10,'n')
+        pumaAnimate(t1old,t2old,t3old,user_entry,t5old,t6old,10,'n')
     end
 %% Edit box for Theta 5 motion.
 %
@@ -295,7 +289,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         t1old = T_Old(1); t2old = T_Old(2); t3old = T_Old(3);
         t4old = T_Old(4); t6old = T_Old(6);
         %
-        pumaANI(t1old,t2old,t3old,t4old,user_entry,t6old,10,'n')
+        pumaAnimate(t1old,t2old,t3old,t4old,user_entry,t6old,10,'n')
     end
 %%
 %% Edit box for Theta 6 motion.
@@ -308,7 +302,7 @@ t6_edit = uicontrol(K_p,'style','edit',...
         t1old = T_Old(1); t2old = T_Old(2); t3old = T_Old(3);
         t4old = T_Old(4); t5old = T_Old(5);
         %
-        pumaANI(t1old,t2old,t3old,t4old,t5old,user_entry,10,'n')
+        pumaAnimate(t1old,t2old,t3old,t4old,t5old,user_entry,10,'n')
     end
 %%
     function user_entry = check_edit(h,min_v,max_v,default,h_edit)
@@ -350,18 +344,18 @@ t6_edit = uicontrol(K_p,'style','edit',...
         num = 30; % home to start, and end to home ani steps
         %         j = 1;
         %         M = 1000;
-        for t = 0:.1:10*pi
-            Px = 100*cos(t); %Px = 30*t*cos(t);
-            Py = 1200 - 20*t; %Py = 1200-300*t*(t)/(50*pi);    %depth
-            Pz = 100*sin(t); %Pz = 30*t*sin(t);
+        for t = 0:.1:11*pi
+            Px = 250*cos(t);        % X radius
+            Py = 1200 - 20*t;       % DEPTH
+            Pz = 250*sin(t);        % Z radius
             %msg = sprintf('x=%f\ny=%f\nz=%f\n', Px, Py, Pz) ;
             %disp(msg);
-            [theta1,theta2,theta3,theta4,theta5,theta6] = PumaIK(Px,Py,Pz);
+            [theta1,theta2,theta3,theta4,theta5,theta6] = pumaInverseKinematic(Px,Py,Pz);
             if t==0 %move to start of demo
-                pumaANI(theta1,theta2,theta3-180,0,0,0,num,'n')
+                pumaAnimate(theta1,theta2,theta3-180,0,0,0,num,'n')
             end
             % Theta 4, 5 & 6 are zero due to plotting at wrist origen.
-            pumaANI(theta1,theta2,theta3-180,0,0,0,n,'y')
+            pumaAnimate(theta1,theta2,theta3-180,0,0,0,n,'y')
             set(t1_edit,'string',round(theta1)); % Update slider and text.
             set(t1_slider,'Value',round(theta1));
             set(t2_edit,'string',round(theta2));
@@ -370,15 +364,9 @@ t6_edit = uicontrol(K_p,'style','edit',...
             set(t3_slider,'Value',round(theta3-180));
         end
         setInitial
-%        pumaANI(90,-90,-90,0,0,0,num,'n')
+%        pumaAnimate(90,-90,-90,0,0,0,num,'n')
     end
 %
-%
-%%
-    function home_button_press(h,dummy)
-        %disp('pushed home bottom');
-        setInitial
-    end
 %
 %%
     function clr_trail_button_press(h,dummy)
@@ -393,54 +381,12 @@ t6_edit = uicontrol(K_p,'style','edit',...
         set(Tr,'xdata',0,'ydata',0,'zdata',0);
     end
 %
-%
-    function rnd_demo_button_press(h, dummy)
-        %disp('pushed random demo bottom');
-        % a = 10; b = 50; x = a + (b-a) * rand(5)
-        %     Angle    Range                Default Name
-        %     Theta 1: 320 (-160 to 160)    90       Waist Joint
-        %     Theta 2: 220 (-110 to 110)    -90       Shoulder Joint
-        %     Theta 3: 270 (-135 to 135)    -90       Elbow Joint
-        %     Theta 4: 532 (-266 to 266)    0       Wrist Roll
-        %     Theta 5: 200 (-100 to 100)    0       Wrist Bend
-        %     Theta 6: 532 (-266 to 266)    0       Wrist Swival
-        t1_home = 90; % offsets to define the "home" postition as UP.
-        t2_home = -90;
-        t3_home = -90;
-        theta1 = -160 + 320*rand(1); % offset for home
-        theta2 = -110 + 220*rand(1); % in the UP pos.
-        theta3 = -135 + 270*rand(1);
-        theta4 = -266 + 532*rand(1);
-        theta5 = -100 + 200*rand(1);
-        theta6 = -266 + 532*rand(1);
-        n = 50;
-        pumaANI(theta1+t1_home,theta2+t2_home,theta3+t3_home,theta4,theta5,theta6,n,'y')
-        set(t1_edit,'string',round(theta1)); % Update slider and text.
-        set(t1_slider,'Value',round(theta1));
-        set(t2_edit,'string',round(theta2));
-        set(t2_slider,'Value',round(theta2));
-        set(t3_edit,'string',round(theta3));
-        set(t3_slider,'Value',round(theta3));
-        set(t4_edit,'string',round(theta4));
-        set(t4_slider,'Value',round(theta4));
-        set(t5_edit,'string',round(theta5));
-        set(t5_slider,'Value',round(theta5));
-        set(t6_edit,'string',round(theta6));
-        set(t6_slider,'Value',round(theta6));
-    end
-        
-
-
-%%
-%Here are the functions used for this robot example:
-%
 %%
 % When called this function will simply initialize a plot of the Puma
 % robot by plotting it in it's home orientation and setting the current
 % angles accordingly.
     function setInitial()
-        pumaANI(90,-90,-90,0,0,0,20,'n') % show it animate home
-        %PumaPOS(90,-90,-90,0,0,0)  %drive it home, no animate.
+        pumaAnimate(90,-90,-90,0,0,0,20,'n') % show it animate home
         set(t1_edit,'string',0);
         set(t1_slider,'Value',0);  %At the home position, so all
         set(t2_edit,'string',0);   %sliders and input boxes = 0. 
@@ -476,86 +422,10 @@ setappdata(0,'Area_data',linkdata.A1);
 end
 %
 %%
-% Use forward kinematics to place the robot in a specified configuration.
-%
-    function PumaPOS(theta1,theta2,theta3,theta4,theta5,theta6)
-
-        s1 = getappdata(0,'Link1_data');
-        s2 = getappdata(0,'Link2_data');
-        s3 = getappdata(0,'Link3_data');
-        s4 = getappdata(0,'Link4_data');
-        s5 = getappdata(0,'Link5_data');
-        s6 = getappdata(0,'Link6_data');
-        s7 = getappdata(0,'Link7_data');
-        A1 = getappdata(0,'Area_data');
-        %
-        a2 = 650;
-        a3 = 0;
-        d3 = 190;
-        d4 = 600;
-        Px = 5000;
-        Py = 5000;
-        Pz = 5000;
-
-        t1 = theta1; 
-        t2 = theta2; 
-        t3 = theta3 %-180;  
-        t4 = theta4; 
-        t5 = theta5; 
-        t6 = theta6; 
-        %
-        % Forward Kinematics
-        T_01 = tmat(0, 0, 0, t1);
-        T_12 = tmat(-90, 0, 0, t2);
-        T_23 = tmat(0, a2, d3, t3);
-        T_34 = tmat(-90, a3, d4, t4);
-        T_45 = tmat(90, 0, 0, t5);
-        T_56 = tmat(-90, 0, 0, t6);
-
-        %T_01 = T_01;
-        T_02 = T_01*T_12;
-        T_03 = T_02*T_23;
-        T_04 = T_03*T_34;
-        T_05 = T_04*T_45;
-        T_06 = T_05*T_56;
-        %
-        Link1 = s1.V1;
-        Link2 = (T_01*s2.V2')';
-        Link3 = (T_02*s3.V3')';
-        Link4 = (T_03*s4.V4')';
-        Link5 = (T_04*s5.V5')';
-        Link6 = (T_05*s6.V6')';
-        Link7 = (T_06*s7.V7')';
-
-        handles = getappdata(0,'patch_h');           %
-        L1 = handles(1);
-        L2 = handles(2);
-        L3 = handles(3);
-        L4 = handles(4);
-        L5 = handles(5);
-        L6 = handles(6);
-        L7 = handles(7);
-        %
-        set(L1,'vertices',Link1(:,1:3),'facec', [0.717,0.116,0.123]);
-        set(L1, 'EdgeColor','none');
-        set(L2,'vertices',Link2(:,1:3),'facec', [0.216,1,.583]);
-        set(L2, 'EdgeColor','none');
-        set(L3,'vertices',Link3(:,1:3),'facec', [0.306,0.733,1]);
-        set(L3, 'EdgeColor','none');
-        set(L4,'vertices',Link4(:,1:3),'facec', [1,0.542,0.493]);
-        set(L4, 'EdgeColor','none');
-        set(L5,'vertices',Link5(:,1:3),'facec', [0.216,1,.583]);
-        set(L5, 'EdgeColor','none');
-        set(L6,'vertices',Link6(:,1:3),'facec', [1,1,0.255]);
-        set(L6, 'EdgeColor','none');
-        set(L7,'vertices',Link7(:,1:3),'facec', [0.306,0.733,1]);
-        set(L7, 'EdgeColor','none');
-    end
-%%
 % This function computes the Inverse Kinematics for the Puma robot
 % given X,Y,Z coordinates for a point in the workspace. Note: The IK are
 % computed for the origin of Coordinate systems 4,5 & 6.
-    function [theta1,theta2,theta3,theta4,theta5,theta6] = PumaIK(Px,Py,Pz)
+    function [theta1,theta2,theta3,theta4,theta5,theta6] = pumaInverseKinematic(Px,Py,Pz)
         theta4 = 0;
         theta5 = 0;
         theta6 = 0;
@@ -652,12 +522,12 @@ end
     end
 %
 %% 
-    function pumaANI(theta1,theta2,theta3,theta4,theta5,theta6,n,trail)
-        % This function will animate the Puma robot given joint angles.
-        % n is number of steps for the animation
-        % trail is 'y' or 'n' (n = anything else) for leaving a trail.
-        %
-        %disp('in animate');
+    % This function will animate the Puma robot given joint angles.
+    % n is number of steps for the animation
+    % trail is 'y' or 'n' (n = anything else) for leaving a trail.
+    %
+    %disp('in animate');
+    function pumaAnimate(theta1,theta2,theta3,theta4,theta5,theta6,n,trail)
         a2 = 650; %D-H paramaters
         a3 = 0;
         d3 = 190;
@@ -784,7 +654,7 @@ end
         dim = get(0,'ScreenSize');
         fig_1 = figure('doublebuffer','on','Position',[0,35,dim(3)-200,dim(4)-110],...
             'MenuBar','none','Name',' Puma - Helix Drawing',...
-            'NumberTitle','off','CloseRequestFcn',@del_app);
+            'NumberTitle','off','CloseRequestFcn',@onClose);
         hold on;
         %light('Position',[-1 0 0]);
         light                               % add a default light
@@ -907,7 +777,7 @@ end
         T = [c -s 0 a; s*ca c*ca -sa -sa*d; s*sa c*sa ca ca*d; 0 0 0 1];
     end
 %%
-    function del_app(varargin)
+    function onClose(varargin)
         %This is the main figure window close function, to remove any
         % app data that may be left due to using it for geometry.
         %CloseRequestFcn
